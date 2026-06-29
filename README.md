@@ -1,78 +1,92 @@
-# Resume Analysis and Job Matching System
+# 📄 Resume Analysis and Job Matching System
 
-An AI-powered web application that analyzes resumes against job descriptions to evaluate ATS (Applicant Tracking System) compatibility. The system extracts technical skills, identifies missing keywords, predicts suitable career roles, provides recruiter-style insights, and generates a detailed PDF report.
+> 🚀 A Flask-based ATS Resume Analyzer that compares resumes with job descriptions, predicts suitable career roles, provides recruiter-style insights, and generates downloadable PDF reports.
 
----
-
-## Features
-
-- 📄 Upload resumes in PDF format
-- 📝 Analyze resumes against any job description
-- 📊 Calculate ATS Match Score
-- ✅ Detect matched and missing skills
-- 📈 Skill Gap Dashboard
-- 👨‍💼 AI Recruiter Summary
-- 🧠 AI Resume Insights
-- 🎯 Career Role Prediction
-- 📑 Resume Section Analysis
-- ❤️ Resume Health Assessment
-- 📥 Download Detailed PDF Report
+An AI-powered web application that analyzes resumes against job descriptions to evaluate **ATS (Applicant Tracking System)** compatibility. The system extracts technical skills, identifies missing keywords, predicts suitable career roles, provides recruiter-style insights, and generates a detailed PDF report.
 
 ---
 
-## Screenshots
+## ✨ Features
 
-### Home
+* 📄 Upload resumes in PDF format
+* 📝 Analyze resumes against any job description
+* 📊 Calculate ATS Match Score
+* ✅ Detect matched and missing skills
+* 📈 Skill Gap Dashboard
+* 👨‍💼 AI Recruiter Summary
+* 🧠 AI Resume Insights
+* 🎯 Career Role Prediction
+* 📑 Resume Section Analysis
+* ❤️ Resume Health Assessment
+* 📥 Download Detailed PDF Report
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home
+
 ![Home](screenshots/home.png)
 
-### Analysis Results
+### 📊 Analysis Results
+
 ![Results](screenshots/analysis-results.png)
 
-### ATS Score
+### 🎯 ATS Score
+
 ![ATS](screenshots/ats-score.png)
 
-### Dashboard
+### 📈 Dashboard
+
 ![Dashboard](screenshots/dashboard.png)
 
-### Skills Analysis
+### 🧩 Skills Analysis
+
 ![Skills](screenshots/skills.png)
 
-### Career Role Prediction
+### 💼 Career Role Prediction
+
 ![Roles](screenshots/career-roles.png)
 
-### AI Resume Insights
+### 🧠 AI Resume Insights
+
 ![Insights](screenshots/ai-resume-insights.png)
 
-### Suggestions
+### 💡 Suggestions
+
 ![Suggestions](screenshots/suggestions.png)
 
-### PDF Report
+### 📄 PDF Report
+
 ![PDF](screenshots/pdf-report.png)
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-### Backend
-- Python
-- Flask
+### ⚙️ Backend
 
-### Frontend
-- HTML
-- CSS
-- JavaScript
+* Python
+* Flask
 
-### Libraries
-- PyMuPDF (fitz)
-- ReportLab
-- NLTK
-- Regular Expressions
+### 🎨 Frontend
+
+* HTML
+* CSS
+* JavaScript
+
+### 📚 Libraries
+
+* PyMuPDF (fitz)
+* ReportLab
+* NLTK
+* Regular Expressions
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
-```
+```text
 Resume-Analysis-and-Job-Matching-System/
 │
 ├── app.py
@@ -105,6 +119,8 @@ Resume-Analysis-and-Job-Matching-System/
 ├── templates/
 │   └── index.html
 │
+├── screenshots/
+│
 ├── uploads/
 │
 └── reports/
@@ -112,62 +128,62 @@ Resume-Analysis-and-Job-Matching-System/
 
 ---
 
-## How It Works
+## ⚡ How It Works
 
-1. Upload a resume in PDF format.
-2. Paste the target job description.
-3. The system extracts text from the resume.
-4. Technical skills are identified using NLP-based keyword extraction.
-5. Resume skills are compared with the job description.
-6. ATS Match Score is calculated.
-7. Suitable career roles are predicted.
-8. AI-generated recruiter insights and recommendations are displayed.
-9. A detailed PDF report can be downloaded.
-
----
-
-## ATS Analysis Includes
-
-- ATS Match Score
-- Technical Skill Analysis
-- Resume Health
-- Resume Section Analysis
-- Skill Gap Dashboard
-- AI Resume Insights
-- Recruiter Summary
-- Career Role Prediction
-- Suggestions for Missing Skills
-- PDF Report Generation
+1. 📄 Upload a resume in PDF format.
+2. 📝 Paste the target job description.
+3. 🔍 The system extracts text from the resume.
+4. 🧠 Technical skills are identified using NLP-based keyword extraction.
+5. ⚖️ Resume skills are compared with the job description.
+6. 📊 ATS Match Score is calculated.
+7. 🎯 Suitable career roles are predicted.
+8. 👨‍💼 AI-generated recruiter insights and recommendations are displayed.
+9. 📥 A detailed PDF report can be downloaded.
 
 ---
 
-## Installation
+## 📋 ATS Analysis Includes
 
-### 1. Clone the repository
+* 📊 ATS Match Score
+* 🧩 Technical Skill Analysis
+* ❤️ Resume Health
+* 📑 Resume Section Analysis
+* 📈 Skill Gap Dashboard
+* 🧠 AI Resume Insights
+* 👨‍💼 Recruiter Summary
+* 💼 Career Role Prediction
+* 💡 Suggestions for Missing Skills
+* 📄 PDF Report Generation
+
+---
+
+## 🚀 Installation
+
+### 1️⃣ Clone the repository
 
 ```bash
 git clone https://github.com/Shwetha-29/resume-analysis-and-job-matching-system.git
 ```
 
-### 2. Navigate to the project
+### 2️⃣ Navigate to the project
 
 ```bash
 cd resume-analysis-and-job-matching-system
 ```
 
-### 3. Install dependencies
+### 3️⃣ Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Run the application
+### 4️⃣ Run the application
 
 ```bash
 python app.py
 ```
 
-### 5. Open in your browser
+### 5️⃣ Open in your browser
 
 ```
 http://127.0.0.1:5000
@@ -175,24 +191,26 @@ http://127.0.0.1:5000
 
 ---
 
-## Example Workflow
+## 🔄 Example Workflow
 
-- Upload Resume
-- Enter Job Description
-- View ATS Match Score
-- Review Missing Skills
-- Check Career Role Predictions
-- Read AI Recruiter Feedback
-- Download PDF Report
+* 📄 Upload Resume
+* 📝 Enter Job Description
+* 📊 View ATS Match Score
+* ✅ Review Matched & Missing Skills
+* 🎯 Check Career Role Predictions
+* 👨‍💼 Read AI Recruiter Feedback
+* 📥 Download the PDF Report
 
 ---
 
-## Future Enhancements
+## 🔮 Future Enhancements
 
-- Support DOCX resumes
-- Semantic skill matching using embeddings
-- Resume improvement suggestions using LLMs
-- Multiple resume comparison
-- Company-specific ATS optimization
-- Authentication and user accounts
-- Resume history dashboard
+* 📄 Support DOCX resume uploads
+* 🤖 Semantic skill matching using embeddings
+* 🧠 Resume improvement suggestions using LLMs
+* 📂 Multiple resume comparison
+* 🏢 Company-specific ATS optimization
+* 🔐 User authentication and accounts
+* 📚 Resume history dashboard
+
+---
