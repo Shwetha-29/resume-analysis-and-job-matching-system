@@ -1,0 +1,118 @@
+{
+  "Programming": [
+    "python",
+    "java",
+    "c",
+    "c++",
+    "c#"
+  ],
+
+  "Web Development": [
+    "html",
+    "css",
+    "javascript",
+    "typescript",
+    "react",
+    "angular",
+    "vue",
+    "bootstrap",
+    "tailwind css"
+  ],
+
+  "Backend": [
+    "flask",
+    "django",
+    "fastapi",
+    "node",
+    "express",
+    "rest api",
+    "graphql"
+  ],
+
+  "Database": [
+    "sql",
+    "mysql",
+    "postgresql",
+    "mongodb",
+    "sqlite",
+    "oracle"
+  ],
+
+  "Cloud": [
+    "aws",
+    "azure",
+    "gcp",
+    "docker",
+    "kubernetes",
+    "firebase",
+    "vercel",
+    "netlify"
+  ],
+
+  "Machine Learning": [
+    "machine learning",
+    "deep learning",
+    "artificial intelligence",
+    "generative ai",
+    "gen ai",
+    "data science",
+    "computer vision",
+    "nlp",
+    "natural language processing",
+    "tensorflow",
+    "keras",
+    "pytorch",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "seaborn",
+    "scikit-learn",
+    "streamlit",
+    "streamlit cloud",
+    "lstm",
+    "cnn",
+    "rnn",
+    "random forest",
+    "decision tree",
+    "xgboost",
+    "svm",
+    "logistic regression",
+    "linear regression",
+    "classification",
+    "regression",
+    "clustering"
+  ],
+
+  "Generative AI": [
+    "langchain",
+    "langgraph",
+    "openai",
+    "chatgpt",
+    "prompt engineering",
+    "rag",
+    "retrieval augmented generation",
+    "vector database",
+    "chromadb",
+    "faiss",
+    "pinecone",
+    "embeddings",
+    "llm",
+    "large language model",
+    "transformers",
+    "hugging face"
+  ],
+
+  "Tools": [
+    "git",
+    "github",
+    "linux",
+    "json",
+    "xml",
+    "xampp",
+    "php",
+    "postman",
+    "jupyter",
+    "vscode",
+    "google colab"
+  ]
+}

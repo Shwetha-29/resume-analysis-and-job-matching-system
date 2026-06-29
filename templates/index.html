@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Resume Analysis and Job Matching System</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📄 Resume Analysis and Job Matching System</h1>
+
+<p class="subtitle">
+Analyze • Compare • Improve Your Resume
+</p>
+
+<form action="/analyze" method="POST" enctype="multipart/form-data">
+
+<label>Upload Resume (PDF)</label>
+
+<input
+type="file"
+name="resume"
+accept=".pdf"
+required>
+
+<label>Paste Job Description</label>
+
+<textarea
+name="job_description"
+rows="10"
+placeholder="Paste the complete job description here..."
+required></textarea>
+
+<button type="submit">
+🔍 Analyze Resume
+</button>
+
+</form>
+
+{% if score is defined %}
+
+<div class="result">
+
+<!-- ATS Score + Resume Health -->
+
+<div class="top-summary">
+
+    <!-- ATS Score -->
+
+    <div class="summary-card">
+
+    <h2>📊 ATS Match Score</h2>
+
+    <div class="progress">
+
+        <div
+        class="progress-bar {{ score_color }}"
+        style="width:{{score}}%;">
+
+            {{score}}%
+
+        </div>
+
+    </div>
+
+    <p class="score-level">
+
+        {{ score_level }}
+
+    </p>
+
+</div>
+
+    <!-- Resume Health -->
+
+    <div class="summary-card resume-health {{ resume_health.color }}">
+
+    <h2>🩺 Resume Health</h2>
+
+    <div class="health-header">
+
+        <span class="health-stars">
+
+            {{ resume_health.stars }}
+
+        </span>
+
+        <span class="health-badge {{ resume_health.color }}">
+
+            {{ resume_health.title }}
+
+        </span>
+
+    </div>
+
+    <p class="health-status">
+
+        {{ resume_health.status }}
+
+    </p>
+
+</div>
+
+</div>
+
+<!-- Recruiter Summary -->
+
+<div class="recruiter-summary">
+
+    <h2>👨‍💼 Recruiter Summary</h2>
+
+    <ul>
+
+        {% for point in recruiter_summary %}
+
+        <li>
+
+            ✔ {{ point }}
+
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+<!-- Summary -->
+
+<div class="card" style="margin-bottom:30px;">
+
+<h3>📌 Analysis Summary</h3>
+
+<p style="font-size:18px;margin-top:15px;">
+
+Your resume matched
+
+<b>{{stats.found}}</b>
+
+out of
+
+<b>{{stats.total}}</b>
+
+required skills.
+
+</p>
+
+<p style="margin-top:10px;">
+
+{{stats.missing}}
+
+important skill(s) are still missing.
+
+</p>
+
+</div>
+
+<!-- Statistics -->
+
+<div class="stats">
+
+<div class="card">
+
+<h3>Total Skills</h3>
+
+<p>{{stats.total}}</p>
+
+</div>
+
+<div class="card">
+
+<h3>Matched</h3>
+
+<p>{{stats.found}}</p>
+
+</div>
+
+<div class="card">
+
+<h3>Missing</h3>
+
+<p>{{stats.missing}}</p>
+
+</div>
+
+</div>
+
+<!-- ATS Breakdown -->
+
+<h2>📈 ATS Score Breakdown</h2>
+
+<div class="dashboard">
+
+{% for item,value in score_breakdown.items() %}
+
+<div class="dashboard-card">
+
+<h3>{{item}}</h3>
+
+<div class="progress small">
+
+<div
+class="progress-bar {{ score_breakdown_colors[item] }}"
+style="width:{{value}}%;">
+
+{{value}}%
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<!-- Career Roles -->
+
+<h2>🎯 Recommended Career Roles</h2>
+
+<div class="dashboard">
+
+{% for role in predictions %}
+
+<div class="dashboard-card">
+
+<h3>{{ role.role }}</h3>
+
+<div class="progress small">
+
+<div
+class="progress-bar {{ role.color }}"
+style="width:{{ role.score }}%;">
+
+{{ role.score }}%
+
+</div>
+
+</div>
+
+<p
+style="
+font-weight:600;
+margin-bottom:15px;
+">
+
+{{ role.level }}
+
+</p>
+
+<h4
+style="
+margin-bottom:8px;
+color:#28a745;
+">
+
+✅ Matched Skills
+
+</h4>
+
+<div style="margin-bottom:15px;">
+
+{% for skill in role.matched[:6] %}
+
+<span class="badge found">
+
+{{ skill }}
+
+</span>
+
+{% endfor %}
+
+{% if role.matched|length > 6 %}
+
+<p
+style="
+margin-top:8px;
+font-size:14px;
+color:#666;
+font-weight:500;
+">
+
++{{ role.matched|length - 6 }} more
+
+</p>
+
+{% endif %}
+
+</div>
+
+<h4
+style="
+margin-bottom:8px;
+color:#dc3545;
+">
+
+❌ Missing Skills
+
+</h4>
+
+<div style="margin-bottom:15px;">
+
+{% for skill in role.missing[:3] %}
+
+<span class="badge missing">
+
+{{ skill }}
+
+</span>
+
+{% endfor %}
+
+{% if role.missing|length > 3 %}
+
+<p
+style="
+margin-top:8px;
+font-size:14px;
+color:#666;
+font-weight:500;
+">
+
++{{ role.missing|length - 3 }} more
+
+</p>
+
+{% endif %}
+
+</div>
+
+<div
+style="
+background:#f8f9fa;
+padding:12px;
+border-radius:10px;
+font-size:14px;
+line-height:1.6;
+margin-top:10px;
+">
+
+💡 {{ role.reason }}
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<!-- Skill Dashboard -->
+
+<h2>📊 Skill Gap Dashboard</h2>
+
+<div class="dashboard">
+
+{% for category,data in dashboard.items() %}
+
+<div class="dashboard-card">
+
+<h3>{{category}}</h3>
+
+<div class="progress small">
+
+<div
+class="progress-bar {{ data.color }}"
+style="width:{{data.percentage}}%;">
+
+{{data.percentage}}%
+
+</div>
+
+</div>
+
+<p>
+
+{{data.matched}}
+/
+{{data.required}}
+Skills
+
+</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<!-- Resume Sections -->
+
+<h2>📑 Resume Section Analysis</h2>
+
+{% for section, content in sections.items() %}
+
+<details class="resume-section">
+
+    <summary>
+
+        <strong>{{ section }}</strong>
+
+    </summary>
+
+    {% if content %}
+
+        <div class="section-content">
+
+            {{ content }}
+
+        </div>
+
+    {% else %}
+
+        <div class="section-content">
+
+            Not Found
+
+        </div>
+
+    {% endif %}
+
+</details>
+
+{% endfor %}
+
+</div>
+
+<!-- AI Insights -->
+
+<h2>🧠 AI Resume Insights</h2>
+
+<div class="dashboard">
+
+    <!-- Strengths -->
+
+    <div class="dashboard-card insight-card strengths">
+
+        <h3>🟢 Strengths</h3>
+
+        <ul>
+
+        {% for insight in insights.strengths %}
+
+            <li>{{ insight }}</li>
+
+        {% endfor %}
+
+        </ul>
+
+    </div>
+
+    <!-- Recommendations -->
+
+    <div class="dashboard-card insight-card recommendations">
+
+        <h3>🟡 Recommendations</h3>
+
+        <ul>
+
+        {% for insight in insights.recommendations %}
+
+            <li>{{ insight }}</li>
+
+        {% endfor %}
+
+        </ul>
+
+    </div>
+
+    <!-- Career Advice -->
+
+    <div class="dashboard-card insight-card career">
+
+        <h3>🔵 Career Advice</h3>
+
+        <ul>
+
+        {% for insight in insights.career_advice %}
+
+            <li>{{ insight }}</li>
+
+        {% endfor %}
+
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- Required Skills -->
+
+<div class="skills-box full-width">
+
+<h3>📋 Skills Required in Job Description</h3>
+
+{% for skill in job_keywords %}
+
+<span class="badge job">
+
+{{skill.title()}}
+
+</span>
+
+{% endfor %}
+
+</div>
+
+<!-- Resume Skills -->
+
+<div class="skills-box full-width">
+
+<h3>📄 Skills Detected in Resume</h3>
+
+{% for skill in resume_keywords %}
+
+<span class="badge resume">
+
+{{skill.title()}}
+
+</span>
+
+{% endfor %}
+
+</div>
+
+<!-- Found vs Missing -->
+
+<div class="columns">
+
+<div class="skills-box">
+
+<h3>✅ Found Skills</h3>
+
+{% for skill in found %}
+
+<span class="badge found">
+
+{{skill.title()}}
+
+</span>
+
+{% endfor %}
+
+</div>
+
+<div class="skills-box">
+
+<h3>❌ Missing Skills</h3>
+
+{% for skill in missing %}
+
+<span class="badge missing">
+
+{{skill.title()}}
+
+</span>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+<!-- Suggestions -->
+
+<div class="suggestions">
+
+<h3>💡 Suggestions</h3>
+
+<ul>
+
+{% for suggestion in suggestions %}
+
+<li>
+
+{{suggestion}}
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+<!-- Download -->
+
+<div style="text-align:center;margin-top:40px;">
+
+<a href="/download-report">
+
+<button type="button">
+
+📥 Download Detailed PDF Report
+
+</button>
+
+</a>
+
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+
+</body>
+
+</html>
