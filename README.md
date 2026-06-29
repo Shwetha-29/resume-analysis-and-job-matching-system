@@ -20,6 +20,37 @@ An AI-powered web application that analyzes resumes against job descriptions to 
 
 ---
 
+## Screenshots
+
+### Home
+![Home](screenshots/home.png)
+
+### Analysis Results
+![Results](screenshots/analysis-results.png)
+
+### ATS Score
+![ATS](screenshots/ats-score.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Skills Analysis
+![Skills](screenshots/skills.png)
+
+### Career Role Prediction
+![Roles](screenshots/career-roles.png)
+
+### AI Resume Insights
+![Insights](screenshots/ai-resume-insights.png)
+
+### Suggestions
+![Suggestions](screenshots/suggestions.png)
+
+### PDF Report
+![PDF](screenshots/pdf-report.png)
+
+---
+
 ## Tech Stack
 
 ### Backend
