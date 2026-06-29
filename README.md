@@ -55,6 +55,7 @@ Resume-Analysis-and-Job-Matching-System/
 ├── models/
 │   ├── analyzer.py
 │   ├── ats_score.py
+│   ├── ai_insights.py
 │   ├── dashboard.py
 │   ├── parser.py
 │   ├── progress_color.py
@@ -114,13 +115,13 @@ Resume-Analysis-and-Job-Matching-System/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Shwetha-29/Resume-Analysis-and-Job-Matching-System.git
+git clone https://github.com/Shwetha-29/resume-analysis-and-job-matching-system.git
 ```
 
 ### 2. Navigate to the project
 
 ```bash
-cd Resume-Analysis-and-Job-Matching-System
+cd resume-analysis-and-job-matching-system
 ```
 
 ### 3. Install dependencies
